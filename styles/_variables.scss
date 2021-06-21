@@ -1,0 +1,25 @@
+// HEADER HEIGHT
+$header-height: 7rem;
+
+// COLORS
+$bg-white: rgb(250, 250, 250);
+$elem-white: rgb(251, 251, 251);
+$bg-dark: rgb(32, 44, 55);
+$elem-dark: rgb(43, 57, 69);
+$sky-blue: rgb(140, 185, 225);
+
+// FONT SIZES
+$font-sizes: (
+    'tiny': 1.35rem,
+    'small': 1.45rem,
+    'medium': 1.75rem,
+    'big': 2rem,
+    'large': 2.2rem
+);
+
+// TRANSITION DURATION
+$duration: 200ms;
+
+// Z-INDEXES
+$priority-index: 3;
+$secondary-index: 2;

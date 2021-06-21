@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST Country - API Project</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/146fed0e33.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../styles/css/main.css">
+</head>
+<body>
+    <!-- Header section -->
+    <header class="header element">
+        <div class="container flex-center-y">
+            <h2>Where in the world?</h2>
+            <div class="theme-switcher flex-center-y">
+                <button class="theme-icon flex-center-y">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <span class="theme-feedback"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main section -->
+    <main class="main-section background">
+        <div class="container">
+            <!-- Filter countries by name -->
+            <div class="filters-section flex-center-y">
+                <form class="country-filter">
+                    <input type="text" name="country" class="filter element" placeholder="Search for a country...">
+                </form>
+
+                <!-- Filter countries by region form -->
+                <form class="region-filter">
+                    <select class="filter element">
+                        <option value="" selected disabled>Filter by Region</option>
+                        <option value="all">All</option>
+                        <option value="africa">Africa</option>
+                        <option value="americas">Americas</option>
+                        <option value="asia">Asia</option>
+                        <option value="europe">Europe</option>
+                        <option value="oceania">Oceania</option>
+                    </select>
+                </form>
+            </div>
+
+            <!-- Country cards container -->
+            <div class="cards-section"></div>
+        </div>
+    </main>
+
+    <!-- Country details overlay -->
+    <div class="country-overlay background">
+        <div class="container">
+            <button class="close-overlay flex-center-y btn element">
+                <span class="cross"><i class="fas fa-times"></i></span>
+                <span>Close</span>
+            </button>
+        </div>
+
+        <div class="container country-wrapper">
+            <section class="country-details">
+                <img src="" alt="Flag" class="flag">
+                <div class="informative">
+                    <h5 class="country-name"></h5>
+                    <div class="stats"></div>
+                    <div class="borders">
+                        <span>Border Countries:</span>
+                        <i class="fas fa-question-circle info-btn"></i>
+                        <p class="borders-info">Some countries have a lot of neighbours, therefore the maximum number of rendered border countries has been set to 3.</p>
+                        <div class="click-borders"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Scroll up button -->
+    <div class="scroll-top flex-centered">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="bundle.js"></script>
+</body>
+</html>

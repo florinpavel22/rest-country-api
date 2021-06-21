@@ -1,0 +1,301 @@
+// IMPORT FILES
+@import 'variables';
+@import 'utilities';
+
+// RESET
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// GENERAL STYLES
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: map-get($font-sizes, small);
+    font-family: 'Inter', sans-serif;
+}
+
+// INDIVIDUAL STYLES
+// Header
+.header {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: $priority-index;
+    height: 7rem;
+    box-shadow: 0.6rem 0.7rem 1.3rem -1.1rem rgba(0, 0, 0, 0.25);
+
+    .container { // Is already 'display: flex' from its utility class
+        justify-content: space-between;
+    }
+
+    h2 {
+        font-size: map-get($font-sizes, 'large');
+
+        @include mediaQueryMax(400px) {
+            font-size: map-get($font-sizes, 'big');
+        }
+    }
+
+    .theme-switcher {
+        width: 6.5rem;
+        cursor: pointer;
+    }
+
+    .theme-icon {
+        background-color: transparent;
+        border: none;
+        font-size: map-get($font-sizes, 'large');
+        margin-right: 0.7rem;
+        transition: color $duration ease;
+        cursor: pointer;
+    }
+}
+
+// Main section
+.main-section {
+    min-height: calc(100vh - #{$header-height}); // Maximum height - the height of the header
+
+    .container {
+        padding: 5rem 0;
+    }
+
+    .filters-section { // Is already 'display: flex' from its utility class
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    form {
+        height: 3.7rem;
+        margin-bottom: 4.5rem;
+
+        @include mediaQueryMax(410px) {
+            width: 100%;
+        }
+
+        &:not(:last-child) {
+            margin-right: 6rem;
+        }
+    }
+
+    .filter {
+        border: none;
+        border-radius: 0.5rem;
+        height: 100%;
+        box-shadow: 0.2rem 0.4rem 0.6rem -0.7rem rgba(0, 0, 0, 0.8);
+        font-family: inherit;
+        font-size: map-get($font-sizes, 'small');
+        outline: none;
+
+        @include mediaQueryMax(400px) {
+            font-size: map-get($font-sizes, 'tiny');
+        }
+    }
+
+    select {
+        padding: 0 1.1rem;
+    }
+
+    input {
+        padding: 0 2.5rem;
+        width: 33rem;
+        font-weight: 500;
+
+        @include mediaQueryMax(410px) {
+            width: 100%;
+        }
+    }
+
+    .cards-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+        grid-gap: 5rem;
+    }
+
+    .card {
+        max-width: 36rem;
+        box-shadow: 0.6rem 0.7rem 1.3rem -1.1rem rgba(0, 0, 0, 0.25);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        cursor: pointer;
+
+        @include mediaQueryMax(730px) {
+            max-width: 41rem;
+        }
+
+        img {
+            width: 100%;
+            height: 20rem;
+            object-fit: cover;
+        }
+
+        .info {
+            padding: 2.5rem 3rem 5rem 3rem;
+        }
+
+        h5 {
+            font-size: map-get($font-sizes, 'medium');
+            margin-bottom: 2.5rem;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+    }
+}
+
+// Overlay section
+.country-overlay {
+    display: none;
+    min-height: calc(100vh - #{$header-height});
+    position: relative;
+
+    .container {
+        padding-top: 3.5rem;
+    }
+
+    .close-overlay {
+        padding: 1rem 3rem;
+        font-size: inherit;
+        box-shadow: 0rem 0.8rem 1.5rem rgba(0, 0, 0, 0.15);
+
+        .cross {
+            margin-right: 0.5rem;
+        }
+    }
+
+    .country-wrapper {
+        @include mediaQueryMax(935px) {
+            position: static;
+            transform: translate(0, 0);
+        }
+
+        padding-bottom: 5rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .country-details {
+        @include mediaQueryMin(935px) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            grid-column-gap: 5rem;
+        }
+
+        .flag {
+            max-width: 50rem;
+            max-height: 34rem;
+            width: 100%;
+            margin: 3.5rem 0;
+        }
+
+        h5 {
+            font-size: map-get($font-sizes, 'big');
+            margin-bottom: 2rem;
+        }
+
+        ul {
+            list-style-type: none;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        .stats {
+            ul {
+                flex: 1;
+
+                &:first-child {
+                    margin-right: 2rem;
+                }
+            }
+
+            @include mediaQueryMin(935px) {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+
+    .borders {
+        position: relative;
+
+        span {
+            font-size: map-get($font-sizes, 'medium');
+            font-weight: 600;
+        }
+
+        .info-btn {
+            &:hover {
+                cursor: pointer;
+            }
+
+            &:hover ~ .borders-info {
+                display: block;
+            }
+        }
+
+        .borders-info {
+            display: none;
+            position: absolute;
+            top: -3.5rem;
+            left: 19rem;
+            padding: 1.3rem;
+            border-radius: 1rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: rgb(51, 51, 51);
+            font-size: map-get($font-sizes, 'tiny');
+            box-shadow: 0.2rem 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
+            @include mediaQueryMax(470px) {
+                font-size: 10px;
+                top: -4rem;
+                left: 18rem;
+            }
+
+            @include mediaQueryMax(345px) {
+                top: -7rem;
+            }
+        }
+
+        .btn {
+            padding: 0.6rem 1.3rem;
+            margin-top: 2rem;
+            box-shadow: 0.2rem 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
+            &:not(:last-child) {
+                margin-right: 0.6rem;
+            }
+        }
+
+        p {
+            margin-top: 1.5rem;
+        }
+    }
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 3rem;
+    width: 5.2rem;
+    height: 5.2rem;
+    border-radius: 50%;
+    font-size: map-get($font-sizes, 'large');
+    background-color: $sky-blue;
+    color: $bg-white;
+    cursor: pointer;
+
+    @include mediaQueryMax(385px) {
+        font-size: map-get($font-sizes, 'medium');
+        width: 4.2rem;
+        height: 4.2rem;
+    }
+}
